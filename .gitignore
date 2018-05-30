@@ -19,3 +19,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.idea/
+Будет удалено .idea/inspectionProfiles/
+Будет удалено .idea/vcs.xml
+Будет удалено .idea/workspace.xml
