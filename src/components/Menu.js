@@ -3,6 +3,11 @@ import {NavLink, Router} from "react-router-dom";
 
 class Menu extends Component {
   render() {
+    const {location} = this.props.history;
+    const contactsClass = location.pathname.match(/^\/contacts/) ? "text-primary" : "";
+    const formClass = location.pathname.match(/^\/form/) ? "text-primary" : "";
+    const historyClass = location.pathname.match(/^\/history/) ? "text-primary" : "";
+
     return (
       <Router history={this.props.history}>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,13 +21,13 @@ class Menu extends Component {
               <li className="nav-item">
                 <NavLink exact className="nav-link" activeClassName="text-dark" to={`/`}>Home</NavLink>
               </li>
-              <li className="nav-item">
+              <li className={"nav-item " + contactsClass}>
                 <NavLink className="nav-link" activeClassName="text-dark" to={`/contacts`}>Contacts</NavLink>
               </li>
-              <li className="nav-item">
+              <li className={"nav-item " + formClass}>
                 <NavLink className="nav-link" activeClassName="text-dark" to={`/form`}>Form</NavLink>
               </li>
-              <li className="nav-item">
+              <li className={"nav-item " + historyClass}>
                 <NavLink className="nav-link" activeClassName="text-dark" to={`/archives/history`}>Archive</NavLink>
               </li>
               <li className="nav-item">
