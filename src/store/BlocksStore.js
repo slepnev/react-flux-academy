@@ -1,0 +1,4 @@
+
+class BlocksStore extends EventEmitter {
+
+}
