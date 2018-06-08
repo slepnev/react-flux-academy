@@ -1,21 +1,28 @@
 import React, {Component} from 'react';
 import Block from "./Main/Block";
+import BlocksStore from "../../store/BlocksStore";
 
 class Main extends Component {
-  render() {
-    const text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi assumenda at consequatur, corporis cupiditate dolorem, ex illum inventore itaque laborum molestias nam nulla officia, omnis quaerat ratione sed sequi soluta tempore. Ab ad, aliquid atque consectetur cumque doloremque enim error et ex fugiat hic incidunt inventore ipsa ipsam iste libero nulla provident quaerat quia quisquam quo quos rem saepe suscipit tempore temporibus voluptatem. Animi blanditiis commodi cupiditate dolor dolorem, enim eum laboriosam molestiae nobis non placeat porro quae qui, quidem sit tenetur veritatis voluptatibus? Accusamus doloremque doloribus ducimus provident quam, quasi, quibusdam quod, reprehenderit repudiandae sapiente sit vitae voluptatum!';
-    const blocks = ['Heading1', 'Heading2', 'Heading3'].map((title, i) => {
-      return (
-        <div className="col-12 mb-4" key={i}>
-          <Block title={title} text={text}/>
-        </div>
-      )
-    });
+  constructor(){
+    super();
+    this.state = {
+      blocks: BlocksStore.getAll()
+    }
+  }
 
+  render() {
     return (
       <div className="container mt-3">
         <div className="row">
-          {blocks}
+          {
+            this.state.blocks.map((block, i) => {
+              return (
+                <div className="col-12 mb-4" key={i}>
+                  <Block title={block.title} text={block.text}/>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     );
