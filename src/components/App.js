@@ -10,23 +10,19 @@ import {createHashHistory} from 'history'
 import Archives from "./Layout/Archives";
 import Layout from "./Layout";
 
-const history = createHashHistory();
-
 class App extends Component {
 
   render() {
     return (
       <Fragment>
-        <Menu history={history}/>
+        <Menu/>
         <Layout>
-          <Router history={history}>
-            <Switch>
-              <Route exact path='' component={Main}/>
-              <Route path='contacts' component={Contacts}/>
-              <Route path='form' component={Form}/>
-              <Route path='archives/:article' component={Archives}/>
-            </Switch>
-          </Router>
+          <Switch>
+            <Route exact path='/' component={Main}/>
+            <Route path='/contacts' component={Contacts}/>
+            <Route path='/form' component={Form}/>
+            <Route path='/archives/:article' component={Archives}/>
+          </Switch>
         </Layout>
       </Fragment>
     );
